@@ -1,0 +1,41 @@
+---
+- name: Configurar laboratorio de servidores
+  hosts: docker
+  gather_facts: true  # Esto permite a Ansible recolectar variables del sistema como el OS o el Hostname
+  tasks:
+    
+    - name: Mostrar el nombre del host
+      ansible.builtin.debug:
+        msg: "El nombre del host es: {{ ansible_hostname }}"
+
+    - name: Mostrar el sistema operativo
+      ansible.builtin.debug:
+        msg: "El sistema operativo es: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Crear el directorio /tmp/ansible-demo
+      ansible.builtin.file:
+        path: /tmp/ansible-demo
+        state: directory
+        mode: '0755'
+
+    - name: Crear archivo info.txt y escribir datos
+      ansible.builtin.copy:
+        # Aquí usamos las variables que Ansible recolectó automáticamente
+        content: |
+          Nombre del servidor: {{ ansible_hostname }}
+          Sistema Operativo: {{ ansible_distribution }}
+        dest: /tmp/ansible-demo/info.txt
+
+    - name: Crear directorios mediante un loop
+      ansible.builtin.file:
+        path: "/tmp/ansible-demo/{{ item }}"
+        state: directory
+      loop:
+        - logs
+        - backup
+        - config
+
+    - name: Mostrar mensaje unicamente si el SO es Ubuntu
+      ansible.builtin.debug:
+        msg: "¡Felicidades, este servidor corre Ubuntu!"
+      when: ansible_distribution == 'Ubuntu'
