@@ -42,6 +42,7 @@ ansible-lab/
 ├── docker-compose.yml
 ├── inventory.ini
 ├── playbook.yml
+├── playbook_success.jpg
 └── README.md
 ```
 
