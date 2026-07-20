@@ -122,7 +122,7 @@ A continuación se presenta una captura de pantalla que evidencia la ejecución 
 <!-- Inserta aquí la captura de pantalla de la ejecución del playbook -->
 
 
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/25df106d-2a19-41b7-b5c1-c57a2c8c2c0b" />
+<img width="1600" height="844" alt="playbook_success" src="https://github.com/user-attachments/assets/bc10a1c3-65c3-4915-bc77-b5d5c7ba57f4" />
 
 ---
 
